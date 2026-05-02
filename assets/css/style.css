@@ -1,0 +1,83 @@
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background: #4ecca3;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #45b393;
+}
+
+.signo-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    display: block;
+    filter: drop-shadow(0 0 10px rgb(78, 204, 163, 0.5));
+}
+
+/* Container da imagem fora do card */
+.signo-animado-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tamanho e formatação do SVG */
+.signo-animado-container svg {
+    width: 250px;
+    height: 250px;
+    /* Tenta forçar a remoção de fundos brancos sólidos */
+    background: transparent !important;
+    filter: drop-shadow(0 0 15px rgba(78, 204, 163, 0.4));
+}
+
+/* Força retângulos de fundo do SVG a ficarem invisíveis */
+.signo-animado-container svg rect {
+    fill: transparent !important;
+}
+
+/* A animação de "desenhar" os contornos */
+.signo-animado-container svg path, 
+.signo-animado-container svg line, 
+.signo-animado-container svg polyline {
+    fill: transparent !important; /* Remove o preenchimento para vermos só a linha */
+    stroke: #4ecca3 !important;   /* Pinta a linha com o seu verde-água */
+    stroke-width: 2px;
+    
+    /* Configuração do traço para a animação */
+    stroke-dasharray: 2500;
+    stroke-dashoffset: 2500;
+    animation: desenharSigno 3s ease-in-out forwards;
+}
+
+/* Keyframes da animação (vai do 2500 até o 0) */
+@keyframes desenharSigno {
+    0% {
+        stroke-dashoffset: 2500;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
